@@ -1,0 +1,43 @@
+syntax = "proto3";
+option java_package = "com.protobuftest.protobuf"; 
+option java_outer_classname = "PersonProbuf";
+option java_multiple_files = true;
+
+service PersonService {
+    rpc Get (PersonRequest) returns (PersonResponse);
+} 
+
+message PersonRequest{
+ 	string name =1;
+ 	int32 id =2;
+}
+ 
+message PersonResponse 
+{ 
+  string name = 1; 
+  int32 id = 2; 
+  string email = 3; 
+ 
+  enum PhoneType 
+  { 
+    MOBILE = 0; 
+    HOME = 1; 
+    WORK = 2; 
+  } 
+ 
+  message PhoneNumber
+  { 
+    string number = 1; 
+    PhoneType type = 2; 
+  } 
+ 
+  repeated PhoneNumber phone = 4; 
+ 
+  message CountryInfo 
+  {
+          string name = 1;
+          string code = 2;
+          int32 number = 3;
+  }
+} 
+ 
